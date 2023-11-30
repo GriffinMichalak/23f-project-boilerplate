@@ -1,12 +1,13 @@
 ##################################################
 # Dockerfile for a simple python image/container
 
-
 # Working from Python version 3.9
 FROM python:3.9-alpine
 
 # setting the working directory inside the container to /code
 WORKDIR /code
+
+RUN sed -i 's/https/http/' /etc/apk/repositories
 
 RUN apk add gcc musl-dev python3-dev libffi-dev openssl-dev
 
