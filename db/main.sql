@@ -1,6 +1,9 @@
 CREATE DATABASE StudyStage;
 USE StudyStage;
 
+-- grant all privileges on StudyStage.* to 'webapp'@'%';
+-- flush privileges;
+
 CREATE TABLE Student (
   StudentID INT AUTO_INCREMENT PRIMARY KEY,
   FirstName VARCHAR(255) NOT NULL,
