@@ -1,0 +1,42 @@
+ANTH101,Anthropology,Introduction to Anthropology,Introduction to the study of human cultures,75,13:00:00,14:00:00,TTH,46
+ART101,Art,Introduction to Art History,Introduction to the history of Western art,50,09:00:00,10:00:00,MWF,56
+ART102,Art,Survey of Modern Art,Introduction to modern and contemporary art,50,09:00:00,10:00:00,MWF,49
+ART201,Art,Introduction to Art History II,"Continuation of Introduction to Art History I, focusing on modern and contemporary art",50,09:00:00,10:00:00,MWF,47
+BIOL101,Biology,Introduction to Biology,Introduction to the basic principles of biology,40,09:00:00,10:00:00,MWF,8
+BIOL102,Biology,Cell Biology,Introduction to the structure and function of cells,40,09:00:00,10:00:00,MWF,89
+BIOL201,Biology,General Biology II,"Continuation of General Biology I, focusing on ecology and evolution",45,09:00:00,10:00:00,MWF,91
+CHEM101,Chemistry,General Chemistry,Introduction to the fundamental concepts of chemistry,45,11:00:00,12:00:00,TR,60
+CHEM102,Chemistry,Organic Chemistry I,Introduction to the fundamental concepts of organic chemistry,45,11:00:00,12:00:00,TR,61
+CHEM201,Chemistry,Organic Chemistry II,Continuation of Organic Chemistry I,40,11:00:00,12:00:00,TR,32
+COMP101,Computer Science,Introduction to Programming,Introduction to programming concepts,35,13:00:00,14:00:00,TTH,48
+ECON101,Economics,Principles of Economics,Introduction to microeconomics and macroeconomics,30,13:00:00,14:00:00,TTH,26
+ECON102,Economics,Intermediate Macroeconomics,Analysis of macroeconomic theory and policy,30,13:00:00,14:00:00,TTH,95
+ECON201,Economics,Microeconomics,Introduction to the principles of microeconomics,50,13:00:00,14:00:00,TTH,7
+ENGL101,English,Composition I,Introduction to college-level writing,20,09:00:00,10:00:00,MWF,71
+ENGL102,English,Composition II,Continuation of college-level writing,20,09:00:00,10:00:00,MWF,60
+ENGL201,English,Literature of the English Renaissance,Introduction to the major works of English literature from the Renaissance period,30,09:00:00,10:00:00,TR,78
+FREN101,French,Elementary French I,Introduction to the French language,35,09:00:00,10:00:00,MWF,96
+FREN102,French,Elementary French II,Continuation of Elementary French I,35,09:00:00,10:00:00,MWF,96
+FREN201,French,Intermediate French I,Continuation of Elementary French II,35,09:00:00,10:00:00,MWF,39
+HIST101,History,Western Civilization I,Survey of Western civilization from ancient times to the Renaissance,25,11:00:00,12:00:00,TR,8
+HIST102,History,Western Civilization II,Survey of Western civilization from the Renaissance to the present,25,11:00:00,12:00:00,TR,95
+HIST201,History,American History to 1865,Survey of American history from the colonial period to the Civil War,40,11:00:00,12:00:00,MWF,48
+ITAL101,Italian,Elementary Italian I,Introduction to the Italian language,45,13:00:00,14:00:00,TTH,84
+ITAL102,Italian,Elementary Italian II,Continuation of Elementary Italian I,45,13:00:00,14:00:00,TTH,73
+ITAL201,Italian,Intermediate Italian I,Continuation of Elementary Italian II,45,13:00:00,14:00:00,TTH,50
+MATH101,Mathematics,Calculus,Introduction to calculus,25,09:00:00,10:00:00,MWF,67
+MUS101,Music,Introduction to Music History,Introduction to the history of Western music,55,11:00:00,12:00:00,TR,27
+MUS102,Music,Music Appreciation,Introduction to the appreciation of Western music,55,11:00:00,12:00:00,TR,26
+MUS201,Music,History of Western Music II,"Continuation of History of Western Music I, focusing on the Baroque, Classical, and Romantic periods",55,11:00:00,12:00:00,TR,87
+PHIL102,Philosophy,Ethics,Introduction to ethical theory and decision-making,65,09:00:00,10:00:00,MWF,25
+PHYS201,Physics,Mechanics,Introduction to mechanics,30,11:00:00,12:00:00,TR,90
+POLS101,Political Science,Introduction to American Politics,Introduction to the American political system,50,13:00:00,14:00:00,TTH,75
+POLS102,Political Science,International Relations,Introduction to the study of international relations,50,13:00:00,14:00:00,TTH,36
+POLS201,Political Science,Comparative Government,Comparison of the political systems of different countries,55,13:00:00,14:00:00,TTH,87
+REL101,Religion,Introduction to World Religions,Introduction to the major world religions,70,11:00:00,12:00:00,TR,85
+SPAN101,Spanish,Elementary Spanish I,Introduction to the Spanish language,40,11:00:00,12:00:00,TR,55
+SPAN102,Spanish,Elementary Spanish II,Continuation of Elementary Spanish I,40,11:00:00,12:00:00,TR,72
+SPAN201,Spanish,Intermediate Spanish I,Continuation of Elementary Spanish II,30,11:00:00,12:00:00,TR,33
+THEA101,Theatre,Introduction to Theatre,Introduction to the history and art of theatre,60,13:00:00,14:00:00,TTH,69
+THEA102,Theatre,Acting Fundamentals,Introduction to the techniques of acting,60,13:00:00,14:00:00,TTH,81
+THEA201,Theatre,Directing Fundamentals,Introduction to the techniques of directing,60,13:00:00,14:00:00,TTH,91
