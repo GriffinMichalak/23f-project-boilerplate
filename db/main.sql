@@ -132,6 +132,15 @@ CREATE TABLE Attends_Group (
 CREATE TABLE Attends_OH (
   StudentID INT NOT NULL,
   OfficeHoursID INT NOT NULL,
+  AssignmentID INT NOT NULL, 
   FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
-  FOREIGN KEY (OfficeHoursID) REFERENCES OfficeHours (OfficeHoursID)
+  FOREIGN KEY (OfficeHoursID) REFERENCES OfficeHours (OfficeHoursID),
+  FOREIGN KEY (AssignmentID) REFERENCES Assignment(AssignmentID)
 )
+
+CREATE TABLE TUTORS_CLASS(
+  TA_ID INT NOT NULL,
+  CourseCode INT NOT NULL,
+  FOREIGN KEY (TA_ID) REFERENCES Teaching_Assistant (TA_ID),
+  FOREIGN KEY (CourseID) REFERENCES Course(CourseCode)
+);
