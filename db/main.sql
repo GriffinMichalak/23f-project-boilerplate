@@ -121,3 +121,17 @@ CREATE TABLE StudyGroup_Assignment (
   PRIMARY KEY (GroupID, AssignmentID)
 );
 
+CREATE TABLE Attends_Group (
+  StudentID INT NOT NULL,
+  StudyGroupID INT NOT NULL,
+  FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
+  FOREIGN KEY (StudyGroupID) REFERENCES StudyGroup(StudyGroupID), 
+  PRIMARY KEY(StudentID, StudyGroupID)
+)
+
+CREATE TABLE Attends_OH (
+  StudentID INT NOT NULL,
+  OfficeHoursID INT NOT NULL,
+  FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
+  FOREIGN KEY (OfficeHoursID) REFERENCES OfficeHours (OfficeHoursID)
+)
