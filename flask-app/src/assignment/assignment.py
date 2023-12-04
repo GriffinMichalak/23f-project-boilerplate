@@ -46,7 +46,7 @@ def add_assignment():
 
     # extracting the variable
     Title = the_data['Title']
-    Description = the_data['Desctiption']
+    Description = the_data['Description']
     InGroups = the_data['InGroups']
     CourseCode = the_data['CourseCode']
     TA_ID = the_data['TA_ID']
@@ -69,28 +69,29 @@ def add_assignment():
 
 @assignment.route('/update-assignment/<assignmentID>', methods=['PUT'])
 def update_assignment(assignmentID):
-
-    # collecting data from the request object 
+    # Extract data from the request body
     the_data = request.json
     current_app.logger.info(the_data)
 
-    # extracting the variable
+    # Destructure the data
     Title = the_data['Title']
-    Description = the_data['Desctiption']
+    Description = the_data['Description']
     InGroups = the_data['InGroups']
     CourseCode = the_data['CourseCode']
     TA_ID = the_data['TA_ID']
 
-    # constructing the query
-    query = 'UPDATE Assignment SET Title = "'
-    query += Title + '", Description = "'
-    query += str(Description) + '", InGroups = '
-    query += str(InGroups) + ', CourseCode = '
-    query += str(CourseCode) + ', TA_ID = '
-    query += str(TA_ID) + ' WHERE AssignmentID = '
-    query += str(assignmentID)
- 
-    # executing and committing the update statement
+    # Construct the update query
+    query = """
+        UPDATE Assignment
+        SET Title = '{0}',
+            Description = '{1}',
+            InGroups = {2},
+            CourseCode = {3},
+            TA_ID = {4}
+        WHERE AssignmentID = {5}
+    """.format(Title, Description, InGroups, CourseCode, TA_ID, assignmentID)
+
+    # Execute the update query
     cursor = db.get_db().cursor()
     cursor.execute(query)
     db.get_db().commit()
