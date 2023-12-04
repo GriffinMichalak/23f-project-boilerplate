@@ -67,8 +67,9 @@ def add_assignment():
     
     return 'Success!'
 
-@assignment.route('/update-student/<userID>', methods=['PUT'])
-def update_student(userID):
+@assignment.route('/update-assignment/<assignmentID>', methods=['PUT'])
+def update_teachingAssistant(assignmentID):
+
     # collecting data from the request object 
     the_data = request.json
     current_app.logger.info(the_data)
@@ -83,12 +84,12 @@ def update_student(userID):
     # constructing the query
     query = 'UPDATE Assignment SET Title = "'
     query += Title + '", Description = "'
-    query += Description + '", InGroups = '
-    query += str(InGroups) + '", CourseCode = '
+    query += str(Description) + '", InGroups = '
+    query += str(InGroups) + ', CourseCode = '
     query += str(CourseCode) + ', TA_ID = '
     query += str(TA_ID) + ' WHERE AssignmentID = '
-    query += str(userID)
-
+    query += str(assignmentID)
+ 
     # executing and committing the update statement
     cursor = db.get_db().cursor()
     cursor.execute(query)
