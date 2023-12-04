@@ -36,7 +36,7 @@ def create_app():
     from src.students.students import students
     from src.professors.professors import professors
     from src.teachingAssistants.teachingAssistants import teachingAssistants
-    # from src.studyGroups.studyGroups import studyGroups
+    from src.studygroup.studygroup import studygroup
     from src.location.location import location
     from src.assignment.assignment import assignment
 
@@ -45,7 +45,7 @@ def create_app():
     app.register_blueprint(students, url_prefix='/students')
     app.register_blueprint(professors, url_prefix='/professor')
     app.register_blueprint(teachingAssistants, url_prefix='/ta')
-    # app.register_blueprint(studyGroups, url_prefix='/study-group')
+    app.register_blueprint(studygroup, url_prefix='/studygroup')
     app.register_blueprint(location, url_prefix='/location')
     app.register_blueprint(assignment, url_prefix='/assignment')
 
