@@ -50,8 +50,7 @@ def create_app():
     app.register_blueprint(studygroup, url_prefix='/studygroup')
     app.register_blueprint(location, url_prefix='/location')
     app.register_blueprint(assignment, url_prefix='/assignment')
-    app.register_blueprint(office_hours, url_prefix='/office-hours')
-
+    app.register_blueprint(office_hours, url_prefix='/officehours')
     app.register_blueprint(classes, url_prefix='/classes')
 
     # Don't forget to return the app object

@@ -26,7 +26,7 @@ def get_office_hourss():
     return the_response
 
 # get a specific office hours by ID
-@office_hours.route('/get-office-hours/<office_hoursID>', methods=['GET'])
+@office_hours.route('/get-officehours/<office_hoursID>', methods=['GET'])
 def get_office_hours(office_hoursID):
     cursor = db.get_db().cursor()
     cursor.execute('SELECT * FROM OfficeHours WHERE OfficeHoursID = {0}'.format(office_hoursID))
@@ -45,7 +45,7 @@ def get_office_hours(office_hoursID):
     return the_response
 
 # create an office hours 
-@office_hours.route('/create-office_hours', methods=['POST'])
+@office_hours.route('/create-officehours', methods=['POST'])
 def add_office_hours():
     
     # collecting data from the request object 
@@ -59,7 +59,7 @@ def add_office_hours():
     TA_ID = the_data['TA_ID']
 
     # Constructing the query
-    query = 'INSERT INTO office_hours (Start_Time, End_Time, CourseCode, TA_ID) VALUES ("'
+    query = 'insert into OfficeHours (Start_Time, End_Time, CourseCode, TA_ID) VALUES ("'
     query += str(Start_Time) + '", "'
     query += str(End_Time) + '", "'
     query += CourseCode + '", "'
@@ -74,7 +74,7 @@ def add_office_hours():
     return 'Successfully created a new Office Hours!'
 
 # Update information about an office hours
-@office_hours.route('/update-office_hours/<office_hoursID>', methods=['PUT'])
+@office_hours.route('/update-officehours/<office_hoursID>', methods=['PUT'])
 def update_office_hours(office_hoursID):
 
     # collecting data from the request object 
@@ -103,7 +103,7 @@ def update_office_hours(office_hoursID):
     return 'Office Hours information updated successfully!'
 
 # Delete an office hours
-@office_hours.route('/delete-office_hours/<office_hoursID>', methods=['DELETE'])
+@office_hours.route('/delete-officehours/<office_hoursID>', methods=['DELETE'])
 def delete_office_hours(office_hoursID):
     # constructing the query
     query = 'DELETE FROM OfficeHours WHERE OfficeHoursID = ' + str(office_hoursID)
