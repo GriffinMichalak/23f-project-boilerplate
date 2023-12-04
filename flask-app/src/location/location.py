@@ -6,7 +6,7 @@ location = Blueprint('location', __name__)
 
 # Get all location from StudyStage
 @location.route('/all', methods=['GET'])
-def get_location():
+def get_locations():
     cursor = db.get_db().cursor()
     cursor.execute('SELECT * FROM Location')
     row_headers = [x[0] for x in cursor.description]
@@ -24,7 +24,7 @@ def get_location():
 
 # Get customer detail for customer with particular userID
 @location.route('/get-location/<locationID>', methods=['GET'])
-def get_teachingAssistant(locationID):
+def get_location(locationID):
     cursor = db.get_db().cursor()
     cursor.execute('SELECT * FROM Location WHERE LocationID = {0}'.format(locationID))
     row_headers = [x[0] for x in cursor.description]
@@ -38,7 +38,7 @@ def get_teachingAssistant(locationID):
     return the_response
 
 @location.route('/create-location', methods=['POST'])
-def add_teachingAssistant():
+def add_location():
     
     # collecting data from the request object 
     the_data = request.json
@@ -66,7 +66,7 @@ def add_teachingAssistant():
     return 'Successfully created a new Location'
 
 @location.route('/update-location/<locationID>', methods=['PUT'])
-def update_teachingAssistant(locationID):
+def update_location(locationID):
     # collecting data from the request object 
     the_data = request.json
     current_app.logger.info(the_data)
@@ -90,10 +90,10 @@ def update_teachingAssistant(locationID):
     cursor.execute(query)
     db.get_db().commit()
 
-    return 'TA information updated successfully!'
+    return 'Location information updated successfully!'
 
 @location.route('/delete-loccation/<locationID>', methods=['DELETE'])
-def delete_teachingAssistant(locationID):
+def delete_location(locationID):
     # constructing the query
     query = 'DELETE FROM Location WHERE LocationID = ' + str(locationID)
 
