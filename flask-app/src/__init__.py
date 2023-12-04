@@ -39,6 +39,7 @@ def create_app():
     from src.studygroup.studygroup import studygroup
     from src.location.location import location
     from src.assignment.assignment import assignment
+    from src.officeHours.office_hours import office_hours
     from src.classes.classes import classes
 
     # Register the routes from each Blueprint with the app object
@@ -49,6 +50,8 @@ def create_app():
     app.register_blueprint(studygroup, url_prefix='/studygroup')
     app.register_blueprint(location, url_prefix='/location')
     app.register_blueprint(assignment, url_prefix='/assignment')
+    app.register_blueprint(office_hours, url_prefix='/office-hours')
+
     app.register_blueprint(classes, url_prefix='/classes')
 
     # Don't forget to return the app object
