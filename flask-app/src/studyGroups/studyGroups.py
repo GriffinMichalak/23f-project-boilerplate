@@ -2,31 +2,33 @@ from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
-students = Blueprint('students', __name__)
+studyGroups = Blueprint('studyGroups', __name__)
 
-# Get all students from StudyStage
-@students.route('/all', methods=['GET'])
-def get_students():
+# Get all studyGroups from StudyStage
+@studyGroups.route('/all', methods=['GET'])
+def get_studyGroups():
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT * FROM Student')
+    cursor.execute('SELECT * FROM StudyGroup')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
+    
     for row in theData:
         json_data.append(dict(zip(row_headers, row)))
+
     the_response = make_response(jsonify(json_data))
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
-
-    # return "Number of students fetched: " + str(len(theData)) + ""
+    
+    # return "Number of studyGroups fetched: " + str(len(theData)) + ""
 
     return the_response
 
 # Get customer detail for customer with particular userID
-@students.route('/get-student/<userID>', methods=['GET'])
-def get_student(userID):
+@studyGroups.route('/studyGroups/<userID>', methods=['GET'])
+def get_studyGroup(userID):
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT * FROM Student WHERE StudentID = {0}'.format(userID))
+    cursor.execute('SELECT * FROM studyGroup WHERE TAID = {0}'.format(userID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -37,8 +39,8 @@ def get_student(userID):
     the_response.mimetype = 'application/json'
     return the_response
 
-@students.route('/create-student', methods=['POST'])
-def add_student():
+@studyGroups.route('/studyGroups/create-studyGroup', methods=['POST'])
+def add_studyGroup():
     
     # collecting data from the request object 
     the_data = request.json
@@ -47,15 +49,15 @@ def add_student():
     #extracting the variable
     FirstName = the_data['FirstName']
     LastName = the_data['LastName']
-    Year = the_data['Year']
-    GPA = the_data['GPA']
+    Semesters_Worked = the_data['Semesters_Worked']
+    Hourly_Wage = the_data['Hourly_Wage']
 
     # Constructing the query
-    query = 'INSERT INTO Student (FirstName, LastName, Year, GPA) VALUES ("'
+    query = 'INSERT INTO studyGroup (FirstName, LastName, Semesters_Worked, Hourly_Wage) VALUES ("'
     query += FirstName + '", "'
     query += LastName + '", "'
-    query += str(Year) + '", '
-    query += str(GPA) + ')'
+    query += str(Semesters_Worked) + '", '
+    query += str(Hourly_Wage) + ')'
     current_app.logger.info(query)
 
     # executing and committing the insert statement 
@@ -63,10 +65,10 @@ def add_student():
     cursor.execute(query)
     db.get_db().commit()
     
-    return 'Success!'
+    return 'Successfully created a new TA'
 
-@students.route('/update-student/<userID>', methods=['PUT'])
-def update_student(userID):
+@studyGroups.route('/studyGroups/update-studyGroup/<userID>', methods=['PUT'])
+def update_studyGroup(userID):
     # collecting data from the request object
     the_data = request.json
     current_app.logger.info(the_data)
@@ -74,15 +76,15 @@ def update_student(userID):
     # extracting the variable
     FirstName = the_data['FirstName']
     LastName = the_data['LastName']
-    Year = the_data['Year']
-    GPA = the_data['GPA']
+    Semesters_Worked = the_data['Semesters_Worked']
+    Hourly_Wage = the_data['Hourly_Wage']
 
     # constructing the query
-    query = 'UPDATE Student SET FirstName = "'
+    query = 'UPDATE studyGroup SET FirstName = "'
     query += FirstName + '", LastName = "'
-    query += LastName + '", Year = '
-    query += str(Year) + ', GPA = '
-    query += str(GPA) + ' WHERE StudentID = '
+    query += LastName + '", Semesters_Worked = '
+    query += str(Semesters_Worked) + ', Hourly_Wage = '
+    query += str(Hourly_Wage) + ' WHERE TAID = '
     query += str(userID)
 
     # executing and committing the update statement
@@ -90,16 +92,16 @@ def update_student(userID):
     cursor.execute(query)
     db.get_db().commit()
 
-    return 'Student information updated successfully!'
+    return 'TA information updated successfully!'
 
-@students.route('/delete-student/<userID>', methods=['DELETE'])
-def delete_student(userID):
+@studyGroups.route('/studyGroups/delete-studyGroup/<userID>', methods=['DELETE'])
+def delete_studyGroup(userID):
     # constructing the query
-    query = 'DELETE FROM Student WHERE StudentID = ' + str(userID)
+    query = 'DELETE FROM studyGroup WHERE TAID = ' + str(userID)
 
     # executing and committing the delete statement
     cursor = db.get_db().cursor()
     cursor.execute(query)
     db.get_db().commit()
 
-    return 'Student deleted successfully!'
+    return 'TA deleted successfully!'

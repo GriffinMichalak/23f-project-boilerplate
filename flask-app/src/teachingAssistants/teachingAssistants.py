@@ -5,7 +5,7 @@ from src import db
 teachingAssistants = Blueprint('teachingAssistants', __name__)
 
 # Get all teachingAssistants from StudyStage
-@teachingAssistants.route('/teachingAssistants', methods=['GET'])
+@teachingAssistants.route('/all', methods=['GET'])
 def get_teachingAssistants():
     cursor = db.get_db().cursor()
     cursor.execute('SELECT * FROM TeachingAssistant')
@@ -23,7 +23,7 @@ def get_teachingAssistants():
     return the_response
 
 # Get customer detail for customer with particular userID
-@teachingAssistants.route('/teachingAssistants/<userID>', methods=['GET'])
+@teachingAssistants.route('/get-ta/<userID>', methods=['GET'])
 def get_teachingAssistant(userID):
     cursor = db.get_db().cursor()
     cursor.execute('SELECT * FROM TeachingAssistant WHERE TAID = {0}'.format(userID))
@@ -37,7 +37,7 @@ def get_teachingAssistant(userID):
     the_response.mimetype = 'application/json'
     return the_response
 
-@teachingAssistants.route('/teachingAssistants/create-teachingAssistant', methods=['POST'])
+@teachingAssistants.route('/create-ta', methods=['POST'])
 def add_teachingAssistant():
     
     # collecting data from the request object 
@@ -65,7 +65,7 @@ def add_teachingAssistant():
     
     return 'Successfully created a new TA'
 
-@teachingAssistants.route('/teachingAssistants/update-teachingAssistant/<userID>', methods=['PUT'])
+@teachingAssistants.route('/update-ta/<userID>', methods=['PUT'])
 def update_teachingAssistant(userID):
     # collecting data from the request object
     the_data = request.json
@@ -92,7 +92,7 @@ def update_teachingAssistant(userID):
 
     return 'TA information updated successfully!'
 
-@teachingAssistants.route('/teachingAssistants/delete-teachingAssistant/<userID>', methods=['DELETE'])
+@teachingAssistants.route('/delete-ta/<userID>', methods=['DELETE'])
 def delete_teachingAssistant(userID):
     # constructing the query
     query = 'DELETE FROM TeachingAssistant WHERE TAID = ' + str(userID)

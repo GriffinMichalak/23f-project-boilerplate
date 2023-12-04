@@ -5,7 +5,7 @@ from src import db
 professors = Blueprint('professors', __name__)
 
 # Get all professors from StudyStage
-@professors.route('/professors', methods=['GET'])
+@professors.route('/all', methods=['GET'])
 def get_professors():
     cursor = db.get_db().cursor()
     cursor.execute('SELECT * FROM Professor')
@@ -23,7 +23,7 @@ def get_professors():
     return the_response
 
 # Get customer detail for customer with particular userID
-@professors.route('/professors/<userID>', methods=['GET'])
+@professors.route('/get-professor/<userID>', methods=['GET'])
 def get_professor(userID):
     cursor = db.get_db().cursor()
     cursor.execute('SELECT * FROM Professor WHERE FacultyID = {0}'.format(userID))
@@ -37,7 +37,7 @@ def get_professor(userID):
     the_response.mimetype = 'application/json'
     return the_response
 
-@professors.route('/professors/create-professor', methods=['POST'])
+@professors.route('/create-professor', methods=['POST'])
 def add_professor():
     
     # collecting data from the request object 
@@ -65,7 +65,7 @@ def add_professor():
     
     return 'Successfully added new Professor'
 
-@professors.route('/professors/update-professor/<userID>', methods=['PUT'])
+@professors.route('/update-professor/<userID>', methods=['PUT'])
 def update_professor(userID):
     # collecting data from the request object
     the_data = request.json
@@ -92,7 +92,7 @@ def update_professor(userID):
 
     return 'Professor information updated successfully!'
 
-@professors.route('/professors/delete-professor/<userID>', methods=['DELETE'])
+@professors.route('/delete-professor/<userID>', methods=['DELETE'])
 def delete_professor(userID):
     # constructing the query
     query = 'DELETE FROM Professor WHERE FacultyID = ' + str(userID)
