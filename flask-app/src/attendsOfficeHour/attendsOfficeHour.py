@@ -68,7 +68,7 @@ def update_attends_office_hour(attends_office_hourID):
     # constructing the query
     query = 'UPDATE Attends_OH SET StudentID = "'
     query += str(StudentID) + '", OfficeHoursID = "'
-    query += str(OfficeHoursID) + '", CourseCode = "'
+    query += str(OfficeHoursID) + '", AssignmentID = "'
     query += str(AssignmentID) + ' WHERE StudentID = '
     query += str(attends_office_hourID)
 
@@ -80,7 +80,7 @@ def update_attends_office_hour(attends_office_hourID):
     return 'Office Hours information updated successfully!'
 
 # Delete an office hours
-@attends_office_hour.route('/delete-officehours/<attends_office_hourID>', methods=['DELETE'])
+@attends_office_hour.route('/delete-attendsOH/<attends_office_hourID>', methods=['DELETE'])
 def delete_attends_office_hour(attends_office_hourID):
     # constructing the query
     query = 'DELETE FROM Attends_OH WHERE StudentID = ' + str(attends_office_hourID)
