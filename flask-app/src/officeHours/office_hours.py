@@ -62,7 +62,7 @@ def add_office_hours():
     query = 'insert into OfficeHours (Start_Time, End_Time, CourseCode, TA_ID) VALUES ("'
     query += str(Start_Time) + '", "'
     query += str(End_Time) + '", "'
-    query += CourseCode + '", "'
+    query += CourseCode + '", '
     query += str(TA_ID) + ')'
     current_app.logger.info(query)
 
@@ -91,7 +91,7 @@ def update_office_hours(office_hoursID):
     query = 'UPDATE OfficeHours SET Start_Time = "'
     query += str(Start_Time) + '", End_Time = "'
     query += End_Time + '", CourseCode = "'
-    query += CourseCode + '", TA_ID = "'
+    query += CourseCode + '", TA_ID = '
     query += str(TA_ID) + ' WHERE OfficeHoursID = '
     query += str(office_hoursID)
 
