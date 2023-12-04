@@ -23,10 +23,10 @@ def get_location():
     return the_response
 
 # Get customer detail for customer with particular userID
-@location.route('/get-location/<userID>', methods=['GET'])
-def get_teachingAssistant(userID):
+@location.route('/get-location/<locationID>', methods=['GET'])
+def get_teachingAssistant(locationID):
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT * FROM Location WHERE LocationID = {0}'.format(userID))
+    cursor.execute('SELECT * FROM Location WHERE LocationID = {0}'.format(locationID))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -65,26 +65,26 @@ def add_teachingAssistant():
     
     return 'Successfully created a new Location'
 
-@location.route('/update-ta/<userID>', methods=['PUT'])
-def update_teachingAssistant(userID):
-    # collecting data from the request object
+@location.route('/update-location/<locationID>', methods=['PUT'])
+def update_teachingAssistant(locationID):
+    # collecting data from the request object 
     the_data = request.json
     current_app.logger.info(the_data)
 
-    # extracting the variable
-    FirstName = the_data['FirstName']
-    LastName = the_data['LastName']
-    Semesters_Worked = the_data['Semesters_Worked']
-    Hourly_Wage = the_data['Hourly_Wage']
+    #extracting the variable
+    BuildingName = the_data['BuildingName']
+    RoomNumber = the_data['RoomNumber']
+    NumberOfSeats = the_data['NumberOfSeats']
+    Link = the_data['Link']
 
     # constructing the query
-    query = 'UPDATE TeachingAssistant SET FirstName = "'
-    query += FirstName + '", LastName = "'
-    query += LastName + '", Semesters_Worked = '
-    query += str(Semesters_Worked) + ', Hourly_Wage = '
-    query += str(Hourly_Wage) + ' WHERE TAID = '
-    query += str(userID)
-
+    query = 'UPDATE Location SET BuildingName = "'
+    query += BuildingName + '", RoomNumber = "'
+    query += str(RoomNumber) + '", NumberOfSeats = '
+    query += str(NumberOfSeats) + ', Link = '
+    query += Link + ' WHERE LocationID = '
+    query += str(locationID)
+ 
     # executing and committing the update statement
     cursor = db.get_db().cursor()
     cursor.execute(query)
@@ -92,14 +92,14 @@ def update_teachingAssistant(userID):
 
     return 'TA information updated successfully!'
 
-@location.route('/delete-ta/<userID>', methods=['DELETE'])
-def delete_teachingAssistant(userID):
+@location.route('/delete-loccation/<locationID>', methods=['DELETE'])
+def delete_teachingAssistant(locationID):
     # constructing the query
-    query = 'DELETE FROM TeachingAssistant WHERE TAID = ' + str(userID)
+    query = 'DELETE FROM Location WHERE LocationID = ' + str(locationID)
 
     # executing and committing the delete statement
     cursor = db.get_db().cursor()
     cursor.execute(query)
     db.get_db().commit()
 
-    return 'TA deleted successfully!'
+    return 'Location deleted successfully!'
