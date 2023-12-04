@@ -68,7 +68,7 @@ def add_assignment():
     return 'Success!'
 
 @assignment.route('/update-assignment/<assignmentID>', methods=['PUT'])
-def update_teachingAssistant(assignmentID):
+def update_assignment(assignmentID):
 
     # collecting data from the request object 
     the_data = request.json
