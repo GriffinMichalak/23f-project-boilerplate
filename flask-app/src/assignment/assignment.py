@@ -96,14 +96,14 @@ def update_student(userID):
 
     return 'Assignment information updated successfully!'
 
-@assignment.route('/delete-student/<userID>', methods=['DELETE'])
-def delete_student(userID):
+@assignment.route('/delete-assignment/<assignmentID>', methods=['DELETE'])
+def delete_student(assignmentID):
     # constructing the query
-    query = 'DELETE FROM Student WHERE StudentID = ' + str(userID)
+    query = 'DELETE FROM Assignment WHERE AssignmentID = ' + str(assignmentID)
 
     # executing and committing the delete statement
     cursor = db.get_db().cursor()
     cursor.execute(query)
     db.get_db().commit()
 
-    return 'Student deleted successfully!'
+    return 'Assignment deleted successfully!'
