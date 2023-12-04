@@ -55,8 +55,8 @@ def add_assignment():
     query = 'INSERT INTO Assignment (Title, Description, InGroups, CourseCode, TA_ID) VALUES ("'
     query += Title + '", "'
     query += Description + '", "'
-    query += str(InGroups) + '", '
-    query += str(CourseCode) + '", '
+    query += str(InGroups) + '", "'
+    query += CourseCode + '", '
     query += str(TA_ID) + ')'
     current_app.logger.info(query)
 
@@ -66,37 +66,6 @@ def add_assignment():
     db.get_db().commit()
     
     return 'Success!'
-
-@assignment.route('/update-assignment/<assignmentID>', methods=['PUT'])
-def update_assignment(assignmentID):
-    # Extract data from the request body
-    the_data = request.json
-    current_app.logger.info(the_data)
-
-    # Destructure the data
-    Title = the_data['Title']
-    Description = the_data['Description']
-    InGroups = the_data['InGroups']
-    CourseCode = the_data['CourseCode']
-    TA_ID = the_data['TA_ID']
-
-    # Construct the update query
-    query = """
-        UPDATE Assignment
-        SET Title = '{0}',
-            Description = '{1}',
-            InGroups = {2},
-            CourseCode = {3},
-            TA_ID = {4}
-        WHERE AssignmentID = {5}
-    """.format(Title, Description, InGroups, CourseCode, TA_ID, assignmentID)
-
-    # Execute the update query
-    cursor = db.get_db().cursor()
-    cursor.execute(query)
-    db.get_db().commit()
-
-    return 'Assignment information updated successfully!'
 
 @assignment.route('/delete-assignment/<assignmentID>', methods=['DELETE'])
 def delete_student(assignmentID):
