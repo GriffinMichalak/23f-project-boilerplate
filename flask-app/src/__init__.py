@@ -36,14 +36,17 @@ def create_app():
     from src.students.students import students
     from src.professors.professors import professors
     from src.teachingAssistants.teachingAssistants import teachingAssistants
-    from src.studyGroups.studyGroups import studyGroups
+    # from src.studyGroups.studyGroups import studyGroups
+    from src.location.location import location
 
     # Register the routes from each Blueprint with the app object
     # and give a url prefix to each
     app.register_blueprint(students, url_prefix='/students')
     app.register_blueprint(professors, url_prefix='/professor')
     app.register_blueprint(teachingAssistants, url_prefix='/ta')
-    app.register_blueprint(studyGroups, url_prefix='/study-group')
+    # app.register_blueprint(studyGroups, url_prefix='/study-group')
+    app.register_blueprint(location, url_prefix='/location')
+
 
     # Don't forget to return the app object
     return app
