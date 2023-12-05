@@ -83,7 +83,7 @@ def add_classes():
     
     return 'Successfully created a new Study Group'
 
-# Update information about a study group
+# Update information about a class
 @classes.route('/update-classes/<courseCode>', methods=['PUT'])
 def update_classes(courseCode):
     # collecting data from the request object

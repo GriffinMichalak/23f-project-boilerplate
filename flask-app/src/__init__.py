@@ -30,7 +30,7 @@ def create_app():
     # Example: localhost:8001
     @app.route("/")
     def welcome():
-        return "<h1>Welcome to the 3200 boilerplate app</h1>"
+        return "<h1>Welcome to StudyStage app</h1>"
 
     # Import the various Beluprint Objects
     from src.students.students import students
@@ -53,7 +53,7 @@ def create_app():
     app.register_blueprint(assignment, url_prefix='/assignment')
     app.register_blueprint(office_hours, url_prefix='/officehours')
     app.register_blueprint(classes, url_prefix='/classes')
-    app.register_blueprint(attends_office_hour, url_prefix='/attends-officehour')
+    app.register_blueprint(attends_office_hour, url_prefix='/attends-officehours')
 
     # Don't forget to return the app object
     return app
