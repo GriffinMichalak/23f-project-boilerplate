@@ -49,6 +49,27 @@ def get_specific_attends_oh(aID, ohID, sID):
 
     return attends_oh_data
 
+@attends_office_hour.route('/create', methods=['POST'])
+def create_attends_oh():
+    # Collecting data from the request object
+    the_data = request.json
+
+    # Extracting the variables
+    assignment_id = the_data['AssignmentID']
+    office_hours_id = the_data['OfficeHoursID']
+    student_id = the_data['StudentID']
+
+    # Constructing the query
+    query = 'INSERT INTO Attends_OH (AssignmentID, OfficeHoursID, StudentID) VALUES ('
+    query += str(assignment_id) + ', ' + str(office_hours_id) + ', ' + str(student_id) + ')'
+
+    # Executing and committing the insert statement
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+
+    return 'Attends_OH record created successfully!'
+
 # Update information about a class
 @attends_office_hour.route('/update/<aID>/<ohID>/<sID>', methods=['PUT'])
 def update_officehours(aID, ohID, sID):
