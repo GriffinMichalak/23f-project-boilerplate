@@ -95,3 +95,15 @@ def update_officehours(aID, ohID, sID):
     db.get_db().commit()
 
     return 'Attends_OH information updated successfully!'
+
+@attends_office_hour.route('/delete/<aID>/<ohID>/<sID>', methods=['DELETE'])
+def delete_classes(aID, ohID, sID):
+    # constructing the query
+    query = 'DELETE FROM Attends_OH WHERE AssignmentID = ' + str(aID) + ' AND OfficeHoursID = ' + str(ohID) + ' AND StudentID = ' + str(sID)
+
+    # executing and committing the delete statement
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+
+    return 'Study Group deleted successfully!'
