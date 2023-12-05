@@ -64,3 +64,43 @@ def create_attends_oh():
     db.get_db().commit()
 
     return 'Attends_Group record created successfully!'
+
+# Update information about a class
+@attends_group.route('/update/<sID>/<gID>', methods=['PUT'])
+def update_officehours(sID, gID):
+    # collecting data from the request object
+    the_data = request.json
+    current_app.logger.info(the_data)
+
+    # extracting the variables
+    AssignmentID = the_data['AssignmentID']
+    OfficeHoursID = the_data['OfficeHoursID']
+    StudentID = the_data['StudentID']
+
+    # constructing the query
+    query = 'UPDATE Attends_OH SET AssignmentID = "'
+    query += str(AssignmentID) + '", OfficeHoursID = "'
+    query += str(OfficeHoursID) + '", StudentID = '
+    query += str(StudentID) + ' WHERE AssignmentID = '
+    query += str(aID) + ' AND OfficeHoursID = '
+    query += str(ohID) + ' AND StudentID = '
+    query += str(sID)
+
+    # executing and committing the update statement
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+
+    return 'Attends_OH information updated successfully!'
+
+@attends_group.route('/delete/<sID>/<gID>', methods=['DELETE'])
+def delete_classes(sID, gID):
+    # constructing the query
+    query = 'DELETE FROM Attends_Group WHERE StudentID = ' + str(sID) + ' AND StudyGroupID = ' + str(gID)
+
+    # executing and committing the delete statement
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+
+    return 'Study Group deleted successfully!'
