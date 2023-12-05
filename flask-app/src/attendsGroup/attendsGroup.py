@@ -73,9 +73,8 @@ def update_officehours(sID, gID):
     current_app.logger.info(the_data)
 
     # extracting the variables
-    AssignmentID = the_data['AssignmentID']
-    OfficeHoursID = the_data['OfficeHoursID']
     StudentID = the_data['StudentID']
+    StudyGroupID
 
     # constructing the query
     query = 'UPDATE Attends_OH SET AssignmentID = "'
