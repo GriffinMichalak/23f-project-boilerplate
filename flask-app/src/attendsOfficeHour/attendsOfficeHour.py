@@ -14,8 +14,6 @@ def get_attends_oh():
     theData = cursor.fetchall()
     for row in theData:
         row_dict = dict(zip(row_headers, row))
-        # row_dict['Start_Time'] = str(row_dict['Start_Time'])
-        # row_dict['End_Time'] = str(row_dict['End_Time'])
         json_data.append(row_dict)
 
     the_response = make_response(jsonify(json_data))
