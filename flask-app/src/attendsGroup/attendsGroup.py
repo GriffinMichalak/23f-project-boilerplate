@@ -74,16 +74,14 @@ def update_officehours(sID, gID):
 
     # extracting the variables
     StudentID = the_data['StudentID']
-    StudyGroupID
+    StudyGroupID = the_data['GroupID']
 
     # constructing the query
-    query = 'UPDATE Attends_OH SET AssignmentID = "'
-    query += str(AssignmentID) + '", OfficeHoursID = "'
-    query += str(OfficeHoursID) + '", StudentID = '
-    query += str(StudentID) + ' WHERE AssignmentID = '
-    query += str(aID) + ' AND OfficeHoursID = '
-    query += str(ohID) + ' AND StudentID = '
-    query += str(sID)
+    query = 'UPDATE Attends_Group SET StudentID = "'
+    query += str(StudentID) + '", StudyGroupID = "'
+    query += str(StudentID) + '" WHERE StudentID = '
+    query += str(sID) + ' AND StudyGroupID = '
+    query += str(gID)
 
     # executing and committing the update statement
     cursor = db.get_db().cursor()
