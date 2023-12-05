@@ -24,6 +24,31 @@ def get_attends_oh():
 
     return the_response
 
+# gets a specific Attends_OH tuple 
+@attends_office_hour.route('/get/<aID>/<ohID>/<sID>', methods=['GET'])
+def get_specific_attends_oh(aID, ohID, sID):
+    query = 'SELECT AssignmentID, OfficeHoursID, StudentID FROM Attends_OH WHERE AssignmentID = '
+    query += str(aID) + ' AND OfficeHoursID = ' + str(ohID) + ' AND StudentID = ' + str(sID)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    result = cursor.fetchone()
+
+    if result is None:
+        return 'No attends_office_hour record found with the specified IDs.'
+
+    assignment_id = result[0]
+    office_hours_id = result[1]
+    student_id = result[2]
+
+    attends_oh_data = {
+        'AssignmentID': assignment_id,
+        'OfficeHoursID': office_hours_id,
+        'StudentID': student_id
+    }
+
+    return attends_oh_data
+
 # Update information about a class
 @attends_office_hour.route('/update/<aID>/<ohID>/<sID>', methods=['PUT'])
 def update_officehours(aID, ohID, sID):
