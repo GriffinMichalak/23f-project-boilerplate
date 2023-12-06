@@ -43,7 +43,7 @@ def get_specific_attends_group(sID):
         'GroupID': group_id
     }
 
-    return attends_oh_data
+    return [attends_oh_data]
 
 @attends_group.route('/create', methods=['POST'])
 def create_attends_oh():
