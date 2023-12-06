@@ -25,7 +25,7 @@ def get_classess():
 
     return the_response
 
-@classes.route('/get-classes/<courseCode>', methods=['GET'])
+@classes.route('/get-class/<courseCode>', methods=['GET'])
 def get_classes(courseCode):
     cursor = db.get_db().cursor()
     cursor.execute('SELECT * FROM Class WHERE CourseCode = {0}'.format(courseCode))
@@ -36,6 +36,24 @@ def get_classes(courseCode):
         row_dict = dict(zip(row_headers, row))
         row_dict['StartTime'] = str(row_dict['StartTime'])
         row_dict['EndTime'] = str(row_dict['EndTime'])
+        json_data.append(row_dict)
+
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+@classes.route('/student-class/<sID>', methods=['GET'])
+def get_class_by_student(sID):
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT * FROM Student_Class WHERE StudentID = {0}'.format(sID))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        row_dict = dict(zip(row_headers, row))
+        # row_dict['StartTime'] = str(row_dict['StartTime'])
+        # row_dict['EndTime'] = str(row_dict['EndTime'])
         json_data.append(row_dict)
 
     the_response = make_response(jsonify(json_data))
