@@ -43,7 +43,7 @@ def get_specific_tutorsClass(taID):
         'TA_ID': ta_id
     }
 
-    return attends_oh_data
+    return [attends_oh_data]
 
 @tutorsClass.route('/create', methods=['POST'])
 def create_attends_oh():
