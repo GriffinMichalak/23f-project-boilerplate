@@ -44,6 +44,25 @@ def get_office_hours(office_hoursID):
     the_response.mimetype = 'application/json'
     return the_response
 
+# get a specific office hours by ID
+@office_hours.route('/get-ta-oh/<taID>', methods=['GET'])
+def get_oh_by_taid(taID):
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT * FROM OfficeHours WHERE TA_ID = {0}'.format(taID))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        row_dict = dict(zip(row_headers, row))
+        row_dict['Start_Time'] = str(row_dict['Start_Time'])
+        row_dict['End_Time'] = str(row_dict['End_Time'])
+        json_data.append(row_dict)
+
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
 # create an office hours 
 @office_hours.route('/create-officehours', methods=['POST'])
 def add_office_hours():
