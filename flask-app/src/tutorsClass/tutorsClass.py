@@ -23,10 +23,10 @@ def get_tutorsClass():
     return the_response
 
 # gets a specific Attends_OH tuple 
-@tutorsClass.route('/get/<classID>', methods=['GET'])
-def get_specific_tutorsClass(classID):
-    query = 'SELECT ClassID, TA_ID FROM TUTORS_CLASS WHERE ClassID = '
-    query += classID
+@tutorsClass.route('/get/<taID>', methods=['GET'])
+def get_specific_tutorsClass(taID):
+    query = 'SELECT ClassID, TA_ID FROM TUTORS_CLASS WHERE TA_ID = '
+    query += taID
 
     cursor = db.get_db().cursor()
     cursor.execute(query)
