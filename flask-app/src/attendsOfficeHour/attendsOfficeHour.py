@@ -45,6 +45,31 @@ def get_specific_attends_oh(aID, ohID, sID):
         'StudentID': student_id
     }
 
+    return [attends_oh_data]
+
+# gets a specific Attends_OH tuple 
+@attends_office_hour.route('/get/<sID>', methods=['GET'])
+def get_specific_attends_oh_by_student(sID):
+    query = 'SELECT AssignmentID, OfficeHoursID, StudentID FROM Attends_OH WHERE AssignmentID = '
+    query += str(sID)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    result = cursor.fetchone()
+
+    if result is None:
+        return 'No attends_office_hour record found with the specified IDs.'
+
+    assignment_id = result[0]
+    office_hours_id = result[1]
+    student_id = result[2]
+
+    attends_oh_data = {
+        'AssignmentID': assignment_id,
+        'OfficeHoursID': office_hours_id,
+        'StudentID': student_id
+    }
+
     return attends_oh_data
 
 @attends_office_hour.route('/create', methods=['POST'])
