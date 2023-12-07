@@ -1,8 +1,0 @@
-Load environment configuration
-mkdir: created directory '/appsmith-stacks/data/certificate'
-mkdir: created directory '/appsmith-stacks/data/certificate/conf'
-/tmp/appsmith/www /opt/appsmith
-/opt/appsmith
-127.0.0.1 - - [04/Dec/2023:17:47:08 +0000] "GET / HTTP/1.1" 200 2050 "-" "curl/7.68.0"
-127.0.0.1 - - [04/Dec/2023:17:47:24 +0000] "GET / HTTP/1.1" 200 6702 "-" "curl/7.68.0"
-127.0.0.1 - - [04/Dec/2023:17:47:39 +0000] "GET / HTTP/1.1" 200 6702 "-" "curl/7.68.0"
