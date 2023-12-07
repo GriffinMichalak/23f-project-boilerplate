@@ -50,7 +50,7 @@ def get_specific_attends_oh(aID, ohID, sID):
 # gets a specific Attends_OH tuple 
 @attends_office_hour.route('/get/<sID>', methods=['GET'])
 def get_specific_attends_oh_by_student(sID):
-    query = 'SELECT AssignmentID, OfficeHoursID, StudentID FROM Attends_OH WHERE AssignmentID = '
+    query = 'SELECT AssignmentID, OfficeHoursID, StudentID FROM Attends_OH WHERE StudentID = '
     query += str(sID)
 
     cursor = db.get_db().cursor()
@@ -70,7 +70,7 @@ def get_specific_attends_oh_by_student(sID):
         'StudentID': student_id
     }
 
-    return attends_oh_data
+    return [attends_oh_data]
 
 @attends_office_hour.route('/create', methods=['POST'])
 def create_attends_oh():
