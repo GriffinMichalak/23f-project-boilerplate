@@ -4,7 +4,7 @@ from src import db
 
 attends_group = Blueprint('attends_group', __name__)
 
-# Get all attends_group from StudyStage
+# Get all attends_group from StudyStage hello hello
 @attends_group.route('/all', methods=['GET'])
 def get_attends_group():
     cursor = db.get_db().cursor()
