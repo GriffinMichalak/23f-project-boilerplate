@@ -1,5 +1,7 @@
 # Study Stage 👨‍🏫📚👩‍🏫
 
+Link to video: 
+
 StudyStage is a comprehensive, data-driven platform designed to facilitate a collaborative learning experience for students. It simplifies the process of finding and connecting with study partners or group members for various academic activities, such as group projects, exams, and even volunteering tutor sessions. Users can create profiles, search for suitable study buddies, send and accept requests, and efficiently manage their study sessions. StudyStage also includes features such as session capacity management, class-specific searches, favorite locations for study sessions, post-filtering, and account management. With StudyStage, students can streamline their academic collaboration, making it easier to excel in their studies.
 
 ## Features
